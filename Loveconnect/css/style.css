@@ -1,0 +1,213 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========================= HERO STYLE ========================= */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e')
+    center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 550px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero-content a {
+  padding: 14px 35px;
+  background: #ff4d6d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.hero-content a:hover {
+  background: #ff314f;
+}
+
+/* ========================= FORM CONTAINERS ========================= */
+
+.form-container {
+  width: 95%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: 35px;
+  border-radius: 20px;
+  color: #333;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+  font-weight: 600;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  margin: 12px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  transition: 0.2s;
+}
+
+.form-container input:focus {
+  border-color: #ff4d6d;
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(255, 77, 109, 0.4);
+}
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: #ff4d6d;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff1f46;
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+a {
+  color: #ff2e55;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========================= DASHBOARD CARDS ========================= */
+
+.card {
+  width: 100%;
+  background: #fff;
+  padding: 18px;
+  margin: 15px 0;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  margin: 8px 0;
+}
+
+.card-content button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: .9rem;
+}
+
+.like-btn {
+  background: #ff4d6d;
+  color: white;
+}
+
+.nope-btn {
+  background: #ddd;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  background: #333;
+  color: #fff;
+}
+
+/* ========================= CHAT BOX ========================= */
+
+.chat-container {
+  width: 95%;
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+}
+
+#messagesBox {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+
+

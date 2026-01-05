@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LANDING PAGE -->
+  <section class="landing" id="landing">
+    <div class="overlay"></div>
+    <div class="landing-content">
+      <h1 class="logo">CityHub</h1>
+      <p class="subtitle">Discover food, events, jobs & people around you.</p>
+      <div class="landing-buttons">
+        <button class="btn" id="getStartedBtn">Get Started</button>
+        <button class="btn secondary" id="loginBtn">Login / Signup</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN / SIGNUP MODAL -->
+  <div class="modal hidden" id="loginModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Login / Signup</h2>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="loginSubmit" class="btn">Submit</button>
+    </div>
+  </div>
+
+  <!-- HOME PAGE -->
+  <section class="home hidden" id="home">
+    <header class="top-bar">
+      <h2>CityHub</h2>
+    </header>
+
+    <!-- CATEGORIES -->
+    <div class="categories">
+      <div class="cat">🍔 Food</div>
+      <div class="cat">💼 Jobs</div>
+      <div class="cat">🎉 Events</div>
+      <div class="cat">👥 People</div>
+    </div>
+
+    <!-- EXPLORE CARDS -->
+    <h3 class="section-title">Explore Nearby</h3>
+    <div class="cards">
+      <!-- JS will populate cards dynamically -->
+    </div>
+
+    <!-- SWIPE CARDS -->
+    <h3 class="section-title">Swipe for Fun</h3>
+    <div class="swipe-container" id="swipeContainer">
+      <!-- JS will populate swipe cards dynamically -->
+    </div>
+    <div class="swipe-buttons">
+      <button id="dislikeBtn" class="btn secondary">❌</button>
+      <button id="likeBtn" class="btn">❤️</button>
+    </div>
+
+    <!-- MAP BUTTON -->
+    <button class="map-btn" id="mapBtn">🗺 View on Map</button>
+  </section>
+
+  <script src="main.js" type="module"></script>
+</body>
+</html>
+
+

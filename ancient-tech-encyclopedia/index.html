@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modern Abacus with History & Calculator</title>
+<style>
+  /* Fonts & basic styles */
+  @import url('https://fonts.googleapis.com/css2?family=Georgia&display=swap');
+
+  body {
+    font-family: Georgia, serif;
+    background: #f9f5f1;
+    color: #3e2c23;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  header h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px #bfa67a;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  /* Abacus container */
+  .abacus {
+    width: 350px;
+    height: 220px;
+    background: #a66e39;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: inset 0 0 10px #704a24;
+    margin: 20px auto 40px auto;
+    position: relative;
+  }
+  /* Rods */
+  .rod {
+    position: absolute;
+    width: 6px;
+    height: 180px;
+    background: #503a20;
+    top: 20px;
+  }
+  .rod:nth-child(1) { left: 30px; }
+  .rod:nth-child(2) { left: 80px; }
+  .rod:nth-child(3) { left: 130px; }
+  .rod:nth-child(4) { left: 180px; }
+  .rod:nth-child(5) { left: 230px; }
+  /* Beads */
+  .bead {
+    width: 40px;
+    height: 40px;
+    background: #d3a15a;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #b07a3a;
+    position: absolute;
+    left: -17px; /* center bead on rod */
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  /* Each bead position on rods */
+  .rod1 .bead:nth-child(1) { top: 25px; }
+  .rod1 .bead:nth-child(2) { top: 75px; }
+  .rod1 .bead:nth-child(3) { top: 125px; }
+  .rod1 .bead:nth-child(4) { top: 175px; }
+  .rod2 .bead:nth-child(1) { top: 25px; }
+  .rod2 .bead:nth-child(2) { top: 75px; }
+  .rod2 .bead:nth-child(3) { top: 125px; }
+  .rod2 .bead:nth-child(4) { top: 175px; }
+  .rod3 .bead:nth-child(1) { top: 25px; }
+  .rod3 .bead:nth-child(2) { top: 75px; }
+  .rod3 .bead:nth-child(3) { top: 125px; }
+  .rod3 .bead:nth-child(4) { top: 175px; }
+  .rod4 .bead:nth-child(1) { top: 25px; }
+  .rod4 .bead:nth-child(2) { top: 75px; }
+  .rod4 .bead:nth-child(3) { top: 125px; }
+  .rod4 .bead:nth-child(4) { top: 175px; }
+  .rod5 .bead:nth-child(1) { top: 25px; }
+  .rod5 .bead:nth-child(2) { top: 75px; }
+  .rod5 .bead:nth-child(3) { top: 125px; }
+  .rod5 .bead:nth-child(4) { top: 175px; }
+  /* Hover effect */
+  .bead:hover {
+    background-color: #b38633;
+    box-shadow: 4px 4px 8px #996d2c;
+  }
+  /* Active bead "slid" */
+  .bead.active {
+    transform: translateX(60px);
+    background-color: #996d2c;
+    box-shadow: 4px 4px 8px #704a24;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .abacus {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+    }
+    .rod {
+      position: relative;
+      width: 6px;
+      height: 200px;
+      margin: 0 20px;
+      display: inline-block;
+      top: auto;
+      left: auto;
+    }
+    .rod1, .rod2, .rod3, .rod4, .rod5 {
+      position: relative;
+    }
+    .bead {
+      position: relative;
+      left: 0;
+      margin-bottom: 15px;
+    }
+    .bead.active {
+      transform: translateX(0);
+    }
+  }
+  /* Calculator display */
+  .display {
+    text-align: center;
+    font-size: 2rem;
+    background: #fff9f0;
+    border: 2px solid #d2b48c;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    box-shadow: 3px 3px 8px #c7b299;
+  }
+  /* History section */
+  .history {
+    background: #fff9f0;
+    border: 2px solid #d2b48c;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: 5px 5px 10px #c7b299;
+  }
+  .history img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-style: italic;
+    color: #8a7a66;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Modern Abacus with History & Calculator</h1>
+  </header>
+
+  <div class="display" aria-live="polite" aria-atomic="true" role="region">
+    Current value: <span id="calcValue">0</span>
+  </div>
+
+  <div class="abacus" aria-label="Interactive abacus calculator" role="application" tabindex="0">
+    <div class="rod rod1" data-rod="1">
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+    </div>
+    <div class="rod rod2" data-rod="2">
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+    </div>
+    <div class="rod rod3" data-rod="3">
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+    </div>
+    <div class="rod rod4" data-rod="4">
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+    </div>
+    <div class="rod rod5" data-rod="5">
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+      <div class="bead"></div>
+    </div>
+  </div>
+
+  <div class="history">
+    <h2>History of the Abacus</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Abacus_Chinese_style.jpg" alt="Chinese style abacus" />
+    <p>The abacus is one of the oldest calculating tools, invented over 2500 years ago. It was used in various cultures, including Chinese, Roman, and Middle Eastern societies.</p>
+    <p>Its design consists of rods and beads which can be moved to represent numbers and perform arithmetic operations. Even today, it is taught in some schools to help students understand number concepts.</p>
+  </div>
+
+  <footer>
+    “The abacus shows how human ingenuity can create powerful tools with simple materials.”  
+  </footer>
+
+  <script>
+    // JavaScript to add interactive bead sliding and calculate total value
+    // Each rod represents a digit place (units, tens, hundreds, thousands, ten-thousands)
+    // Each bead is worth 1 unit in that place when slid (active)
+
+    const rods = document.querySelectorAll('.rod');
+    const calcValueEl = document.getElementById('calcValue');
+
+    // Store active bead counts per rod
+    let rodValues = [0, 0, 0, 0, 0]; // index 0 = rod1 units, rod2 tens, etc
+
+    rods.forEach((rod, rodIndex) => {
+      const beads = rod.querySelectorAll('.bead');
+      beads.forEach((bead, beadIndex) => {
+        bead.addEventListener('click', () => {
+          // Toggle this bead's active state and all beads above it
+          // In abacus, beads are counted from bottom to top, so bead 4 is bottom, 1 is top
+          // But we placed them from top down, so invert index:
+          const beadPos = beadIndex;
+          // Count how many beads are currently active
+          let activeCount = [...beads].filter(b => b.classList.contains('active')).length;
+
+          if (bead.classList.contains('active')) {
+            // If clicked bead is active, deactivate this and all below it
+            for(let i = beadPos; i < beads.length; i++){
+              beads[i].classList.remove('active');
+            }
+          } else {
+            // If clicked bead inactive, activate this and all above it
+            for(let i = 0; i <= beadPos; i++){
+              beads[i].classList.add('active');
+            }
+          }
+
+          // Update rodValues count: how many beads active
+          rodValues[rodIndex] = [...beads].filter(b => b.classList.contains('active')).length;
+
+          updateDisplay();
+        });
+      });
+    });
+
+    function updateDisplay() {
+      // Calculate total value based on beads active per rod
+      // rod1 = units (1), rod2 = tens (10), rod3 = hundreds (100), etc.
+      let total = 0;
+      rodValues.forEach((count, idx) => {
+        total += count * Math.pow(10, idx);
+      });
+      calcValueEl.textContent = total;
+    }
+  </script>
+</body>
+</html>
+
